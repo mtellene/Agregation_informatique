@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <string.h>
 
 int produit1(int x, int y){
 	return x*y;
@@ -97,10 +98,53 @@ void multiplication(){
 	printf("\t = %d\n", a);
 }
 
+void calculatrice(){
+	char calcul[20], operateur;
+	int a, b;
+	printf("Entrer un calcul : ");
+	scanf("%[^\n]%*c", calcul);
+	printf("Calcul : %s\n", calcul);
+	
+	for(int i=0 ; calcul[i] != '\0' ; i++){
+		if(calcul[i] == '+' || calcul[i] == '-' || calcul[i] == '*' || calcul[i] == '%' || calcul[i] == '/'){
+			operateur = calcul[i];
+			calcul[i] = '\0';
+			a = atoi(calcul);
+			b = atoi(&calcul[i+1]);
+			break;
+		}
+	}
+	if(operateur == '+'){ printf("%d\n", a+b); }
+	else if(operateur == '-'){ printf("%d\n", a-b); }
+	else if(operateur == '*'){ printf("%d\n", a*b); }
+	else if(operateur == '%' && b != 0){ printf("%d\n", a%b); }
+	else if(operateur == '/' && b != 0){ printf("%d\n", a/b); }
+}
+
+void changement_valeur_pointeur(){
+	int i = 6;
+	int *p = &i;
+	printf("Valeur de i %d\n", i);
+	*p = 12;
+	printf("Valeur de i %d\n", i);
+}
+
+void elements_nuls_tab(){
+	int tab[8] = {0,1,0,1,0,0,0,1};
+	for(int i=0 ; i<8 ; i++){
+		if(tab[i] == 0){
+			printf("Element nul à l'indice %d\n", i);
+		}
+	}
+}
+
 int main(int argc, char *argv[]){
 	//affiche_pg_nb();
 	//division();
-	multiplication();
+	//multiplication();
+	//calculatrice();
+	//changement_valeur_pointeur();
+	elements_nuls_tab();
 	if(argv[1] != NULL){
 		int x = atoi(argv[1]);
 		affichage_ascii(argv[1]);
