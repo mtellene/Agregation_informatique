@@ -7,7 +7,7 @@
 
 bool verif_parentheses(char *expr){
 	int n = strlen(expr);
-	if(n%2 == 1){ return false;}
+	if(n%2 == 1){ return false; }
 	Pile p = creation_pile();
 	for(int i=0 ; i<n ; i++){
 		printf("%c\n", expr[i]);
