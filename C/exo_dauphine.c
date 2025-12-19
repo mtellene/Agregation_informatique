@@ -138,31 +138,23 @@ void elements_nuls_tab(){
 	}
 }
 
-int main(int argc, char *argv[]){
-	//affiche_pg_nb();
-	//division();
-	//multiplication();
-	//calculatrice();
-	//changement_valeur_pointeur();
-	elements_nuls_tab();
-	if(argv[1] != NULL){
-		int x = atoi(argv[1]);
-		affichage_ascii(argv[1]);
-		printf("%d\n", est_pair(x));
-		liste_diviseur(x);
 
-		if(argv[2] != NULL){
-			int y = atoi(argv[2]);
-			printf("%d\n", produit1(x, y));
-			printf("avant échange : x = %d, y = %d\n", x, y);
-			echange(&x, &y);
-			printf("après échange : x = %d, y = %d\n", x, y);
+#define NMAX 10
+typedef char mot[NMAX];
 
-			if(argv[3] != NULL){
-				int z = atoi(argv[3]);
-				printf("le plus grand des nombres est %d\n", max3(x, y, z));
-			}
-		}
+void miroir(mot dest, mot src){
+	for(int i=0 ; i<strlen(src) ; i++){
+		dest[strlen(src) - 1 - i] = src[i];
 	}
+}
+
+
+
+
+int main(int argc, char *argv[]){
+	mot a = "bonjour";
+	mot b;
+	miroir(b, a);
+	printf("Mot source : %s\nMot destination : %s\n", a, b);
 	return 0;
 }
